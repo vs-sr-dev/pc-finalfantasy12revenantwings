@@ -6,11 +6,11 @@ first battle (`00-sessions.md`, `09-recompiler.md`, `11-runtime.md`).
 Next:
 
 1. **The user's eyes and ears in the window** (`ndsrun "$ROM" --window
-   --save-size 65536 --out build/play`, MSYS2 on PATH): the logos, the
-   movies and their sound (the second movie's sound peaks at full scale
-   in a WAV of the run: to hear against melonDS), the title's music, the
-   tutorial played with the mouse as the stylus. Anything off goes into
-   `12-picture.md` and `13-sound.md`.
+   --save-size 65536 --out build/play`, MSYS2 on PATH): done for the
+   logos, the movies, their sound, the first battle and the stylus
+   (selections single and by a drag), nothing to report (`00-sessions.md`).
+   On through the next missions; anything off goes into `12-picture.md`
+   and `13-sound.md`.
 2. **The gameplay loop**: the first missions, the airship (overlay 2),
    the preparations (5), the license board (1), a save and a load (the
    512 Kbit EEPROM; the window writes it when it closes). The log's

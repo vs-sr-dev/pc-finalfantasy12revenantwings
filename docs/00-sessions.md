@@ -85,3 +85,10 @@
   New Game, A, a tap on the Flan): the second movie, the prologue,
   "COMMENCE!", the tutorial taking the tap as an order; the pictures
   right by eye.
+* **The user's eyes and ears**: in the window from a new cartridge,
+  3 min 32 s of play (12 702 frames: the logos and the opening skipped,
+  New Game, the second movie, then three minutes of the Glabados Ruins'
+  battle): "everything works perfectly" — the battles, the movies, the
+  sound, the stylus by the mouse, units selected singly and several at
+  once by a drag. No function interpreted; the audio queue never ran dry
+  nor was cut (playback ratio 1.0002).
