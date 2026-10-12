@@ -11,11 +11,12 @@ Next:
    (selections single and by a drag), nothing to report (`00-sessions.md`).
    On through the next missions; anything off goes into `12-picture.md`
    and `13-sound.md`.
-2. **The gameplay loop**: the first missions, the airship (overlay 2),
-   the preparations (5), the license board (1), a save and a load (the
-   512 Kbit EEPROM; the window writes it when it closes). The log's
-   `... interpreted (lr ...)` lines, if any appear, read and their rules
-   found, as pc-nostalgia did.
+2. **The gameplay loop**: done by the user through the prologue and
+   mission 1-1 (48 minutes in all), a save, a load with Continue, a Game
+   Over, nothing interpreted (`00-sessions.md`). Left: the airship's
+   screens at length (overlay 2), the preparations (5), the license board
+   (1), the world map; the log's `... interpreted (lr ...)` lines, if any
+   appear, read and their rules found, as pc-nostalgia did.
 3. **The movies' pacing and sound** (`05-open-questions.md`): channels
    12 and 13 loop 704 PCM16 samples at 369 Hz through the whole movie
    (*inferred*: the player's clock); the movies with their own sound

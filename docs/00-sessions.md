@@ -102,3 +102,10 @@
   read back within the session, and to the `.sav` when the window
   closed. **Continue loads it** in a new window (the user, playing on
   into mission 1-1).
+* **Mission 1-1, by the user**: 34 min 46 s from Continue (125 167
+  frames), the mission's battles and tutorials, a movie, a Game Over
+  against Ba'gamnan and the game going on after it; overlays 0, 2 and 3
+  in turn, **nothing interpreted**, the audio queue never dry nor cut
+  (ratio 1.0000), the backup written at the close. Not yet seen in play:
+  the airship's own screens at length, the preparations (overlay 5) and
+  the license board (overlay 1).
