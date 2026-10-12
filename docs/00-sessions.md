@@ -92,3 +92,12 @@
   sound, the stylus by the mouse, units selected singly and several at
   once by a drag. No function interpreted; the audio queue never ran dry
   nor was cut (playback ratio 1.0002).
+* **The gameplay loop, by the user**: 13 min 23 s from a new cartridge
+  (48 027 frames) through the prologue to **mission 1-1**, "everything
+  perfect". Overlays 0, 2 and 3 in turn (the missions, the moves
+  between them, two more movies: at 28 701 and 34 861), nothing
+  interpreted, the audio queue never dry. **Saved twice**, the second
+  save showing the first: the game wrote about 26 KiB of the EEPROM
+  (0x2000-0x8740, the header at 0x000 naming the airship "Galbana"),
+  read back within the session, and to the `.sav` when the window
+  closed.
