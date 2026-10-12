@@ -1,0 +1,57 @@
+# Sessions
+
+## Session 1 (2026-10-12) — the cartridge, the code, the oracle, the plan
+
+* **The repository**: ndskit as a submodule at `ndskit/` (`../ndskit`,
+  at `5ee24af`), pc-lufiacots's MIT licence and `.gitignore` (with
+  `*.vx`); the cartridge in `rom/`.
+* **The cartridge** (`01-cartridge-layout.md`): the European release,
+  AXFP, Square Enix (GD), **NitroSDK 4.0**, 128 MiB; on screen the logos
+  of Square Enix, Think & Feel, the Ivalice Alliance and Actimagine's
+  video codec, the opening's staff, and "© 2007, 2008 SQUARE ENIX
+  CO.,LTD." on the title. **The ARM9 plain**, its autoloads to the ITCM
+  and the DTCM; **six plain overlays at one address** (0x020838C0): the
+  missions (0), the license board (1), the airship (2), the movies and
+  the ending (3), the title (4), the preparations (5); **an SDK 4 ARM7**,
+  871 of its 942 functions as Moon's; 2 140 files in 202 directories;
+  the save a **512 Kbit EEPROM** (0x1001 in the save module; melonDS's
+  `.sav` is 64 KiB).
+* **The formats** (`02-data-formats.md`): the SDK's NARC (G2D, G3D)
+  everywhere; the game's **packs** (`.dpk`, 42 files, 6 533 members, some
+  LZ10: `tools/dpk.py`), its **maps** (`.bmd2`, an NSBMD with its
+  animations and game sections), its tables; text in Latin-1 per
+  language (E, F, G, I, S); **ten movies in Actimagine's VX**, both
+  screens, 256 × 192 at 12 fps, their sound in the upper screen's file
+  (`tools/vx.py`); one SDAT: 53 sequences, 78 effect archives, 2 237
+  waves, PSG and noise, no streams.
+* **The code** (`03-executables.md`): crt0, `main` at 0x02000BB8 (a loop
+  over scenes, each loading its overlay through `FS_LoadOverlay`
+  0x0200D504 and calling its entry), `FS_StartOverlay` 0x0200D410 (SDK
+  4.0's), the threads' context switch, the save module; **the VX decoder
+  in the ITCM's autoload** (overlay 3 is the player; in melonDS the ITCM
+  is the autoload's byte for byte during the opening movie: no run-time
+  copy, no `--copy`). Discovery: the ARM9 with its overlays **3 610
+  functions, the overlays 4 885, the ARM7 942, 0 conflicts anywhere**;
+  Ghidra's 2 607 functions all discovery's entries but 11, the C++
+  exception runtime. **No anti-piracy**: only the SDK's CARD library
+  touches the card's registers.
+* **The oracle**: `tools/oracle.py` (pc-lufiacots's). From a new
+  cartridge: START skips the opening (the title at 16 s), "New Game"
+  plays a second movie, then the prologue in **the Glabados Ruins**
+  ("COMMENCE!" at about 67 s), a battle with a tutorial that waits for
+  the stylus's orders (a tap on the enemy taken). States kept: the
+  opening, the title, the tutorial (two, two seconds apart), the battle.
+  Overlays resident: 3 in the opening movie, 4 at the title, 0 in the
+  battle.
+* **The frame rate: 30 a second in a mission** (a counter of the game's
+  at 0x020811A0 at half the VBlank count); not measured at the title or in
+  the movies (no counter there).
+* **The plan** (`06-attack-plan.md`): the three ports' road; new here
+  the VX movies (their sound and pacing), the stylus as the game's whole
+  input (the mouse, drags, the lower screen as the main view), hotkeys
+  for the unit tabs and the summons, the 3D at the window's resolution.
+* **ndskit**: unchanged (`10-ndskit.md`); everything ran on `5ee24af`.
+* **A head start on session 2**: `python -m ndskit.recomp --optest`
+  generates 10 modules (16 737 functions, none left to the interpreter),
+  which build with no warning; ndskit's instruction test passes, 57 781
+  vectors, recompiled and interpreted.

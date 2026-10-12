@@ -1,0 +1,17 @@
+# BYOA: no content from the original cartridge enters the repo.
+build/
+rom/
+*.nds
+*.NDS
+*.srl
+*.sdat
+*.mo
+*.png
+*.wav
+*.bin
+*.sav
+*.dsv
+__pycache__/
+*.pyc
+*.zip
+*.vx
