@@ -77,6 +77,39 @@ functions all found but the C++ exception runtime), the oracle driven
 from a new cartridge into the first battle, the frame rate measured in
 it (30), and the plan (`docs/06-attack-plan.md`).
 
+Session 2: recompiled and running. Both programs and the six overlays
+recompiled (16 737 functions, none left to the interpreter; the
+self-test's 103 294 vectors pass, recompiled and interpreted). The game
+boots, plays its logos and opening movie, reaches the title and, with
+scripted presses and taps, the first battle, with no function
+interpreted; the VX movie decodes byte for byte as melonDS's, and the
+title's memory and VRAM agree with melonDS's but for the clock. ndskit
+learnt that a thread switch gives the other CPU the rest of the
+quantum: without it the game ran at 60 frames a second instead of 30.
+
+## Playing it
+
+Early days: from a new cartridge through the opening, the title and the
+first battle, headless; the window is to be tried. You need Python 3, and
+to build: clang, CMake, Ninja and SDL3 (on Windows, MSYS2's
+`mingw-w64-x86_64` packages), and a GPU with OpenGL 4.5. From the
+repository's root, with your cartridge in `rom/`:
+
+```sh
+ROM="rom/Final Fantasy XII - Revenant Wings (Europe) (En,Fr,De,Es,It).nds"
+export PATH=/c/msys64/mingw64/bin:$PATH       # Windows: MSYS2's tools, and SDL3.dll at run time
+python -m ndskit.recomp "$ROM" --out build/recomp                    # about 2 minutes
+cmake -S build/recomp -B build/recomp/b -G Ninja -DCMAKE_CXX_COMPILER=clang++
+ninja -C build/recomp/b                                              # about a minute
+build/recomp/b/ndsrun "$ROM" --window --save-size 65536 --out build/play
+```
+
+The save (a 512 Kbit EEPROM, hence `--save-size` for a new one) is kept
+in `build/play` and written when the window closes. The keys are
+melonDS's defaults: X, Z, S, A for A, B, X, Y; Q, W for L, R; Enter and
+Backspace for START and SELECT; the arrows for the D-pad; the left mouse
+button on the lower screen for the stylus; F12 a picture; Escape quits.
+
 ## Documentation
 
 * [00-sessions.md](docs/00-sessions.md) — what each session did
@@ -87,7 +120,9 @@ it (30), and the plan (`docs/06-attack-plan.md`).
 * [05-open-questions.md](docs/05-open-questions.md) — what is not known yet
 * [06-attack-plan.md](docs/06-attack-plan.md) — what is new against the first three, a better Revenant Wings on PC, the phases, the oracle's route
 * [07-next-session.md](docs/07-next-session.md) — the next session's list
+* [09-recompiler.md](docs/09-recompiler.md) — the modules, the self-test
 * [10-ndskit.md](docs/10-ndskit.md) — what this port gave ndskit
+* [11-runtime.md](docs/11-runtime.md) — the boot, the VBlank count and the 30 frames a second, against melonDS, the route
 
 ## Licence
 
