@@ -55,3 +55,33 @@
   generates 10 modules (16 737 functions, none left to the interpreter),
   which build with no warning; ndskit's instruction test passes, 57 781
   vectors, recompiled and interpreted.
+
+## Session 2 (2026-10-12) — recompiled, booted, the movies exact, into the first battle
+
+* **The recompiler** (`09-recompiler.md`): 10 modules, 16 737 functions,
+  none left to the interpreter, built with no warning. The self-test
+  with this game's functions (the program, the ARM7, overlays 0 and 2)
+  and ndskit's instruction test: **103 294 vectors, no failure**,
+  recompiled and interpreted, at the first run.
+* **The runtime** (`11-runtime.md`): the boot, the logos, the opening
+  movie, the title, headless at about 17 times the DS; **not one
+  function interpreted** from the boot into the first battle.
+* **The logos were half as long as melonDS's**, and the game would have
+  run at 60 frames a second: its frame start read the SDK's VBlank count
+  before the ARM7's handler stored it (the ARM9 ran first in the
+  machine's quantum). **ndskit `ad61a11`: a thread switch takes the
+  rest of the CPU's quantum**; then the logos, the movie and the battle
+  (30 a second) keep melonDS's time. Checked on pc-moon, pc-nostalgia and
+  pc-lufiacots (their self-tests, runs against melonDS and routes as
+  before or closer), fast-forwarded into `D:\Homebrew6\ndskit`, the three
+  ports' submodules bumped and committed (`10-ndskit.md`).
+* **Against melonDS**: 22 bytes of main RAM apart during the logos, 35
+  at the title (the RTC's date, counters), VRAM all equal at the title;
+  **the VX movie decoded byte for byte as melonDS's** (29 bytes apart at
+  the same movie frame, 1.1 MB of frame buffers equal); the run's movie
+  8 frames ahead of melonDS's (its start is a load the runtime's
+  cartridge answers at once).
+* **The route into the Glabados Ruins** with `--input` (START, a tap on
+  New Game, A, a tap on the Flan): the second movie, the prologue,
+  "COMMENCE!", the tutorial taking the tap as an order; the pictures
+  right by eye.

@@ -39,3 +39,13 @@ What the kit may be asked for next (`06-attack-plan.md`): a `drag` in
 `ndsrun --input` (the oracle has one; the game's orders are drags),
 the window's lower screen as the large one, and whatever the VX movies'
 sound and pacing need of the runtime's timing.
+
+## Session 2
+
+| Commit | What | Checked by |
+|---|---|---|
+| `ad61a11` | **a thread switch takes the rest of the CPU's quantum** (`machine.cpp`, `switch_to`): the other CPU runs before the woken thread does, as on the DS, where the SDK's reschedule and the contexts' save and load are a long path. With the ARM9 first in every quantum, this game's frame start read the SDK's VBlank count (0x027FFC3C, the ARM7's VBlank handler keeps it) before the ARM7 had incremented it, took every frame for a late one and ran at 60 frames a second instead of 30 (`11-runtime.md`) | this game: the logos as long as melonDS's (22 bytes of main RAM apart at VBlanks 100, 220, 336, 456), the opening movie from frame 506 (melonDS ~500), 29 bytes apart at the same movie frame, 35 at the title, the first battle at 30 a second; pc-moon: 81 587 vectors both ways, 74 bytes apart at frame 464 (as before), its route to 3 644; pc-nostalgia: 115 425 vectors both ways, its route with overlays 0, 1, 0 at 2 792, 1 973 bytes apart (2 047 before); pc-lufiacots: 137 231 vectors both ways, its title 12 428 bytes apart (12 482 before), its route into Soma Temple to 22 000 with its overlays at the same frames but for one (overlay 0 at 502, 501 before); discovery untouched (a runtime change) |
+
+`D:\Homebrew6\ndskit` is at `ad61a11`; pc-moon's submodule bumped in its
+commit `c7bcad3`, pc-nostalgia's in `56974e0`, pc-lufiacots's in `4a694e8`
+(all local).

@@ -1,47 +1,37 @@
 # Next session
 
-Session 1 read the cartridge, its formats and its code, drove melonDS
-from a new cartridge into the first battle, and wrote the plan
-(`00-sessions.md`, `06-attack-plan.md`). Next, phases 2-4 of the plan:
+Session 2 recompiled and booted the game, made the movies and the
+logos keep melonDS's time (ndskit `ad61a11`), and ran the route into the
+first battle (`00-sessions.md`, `09-recompiler.md`, `11-runtime.md`).
+Next:
 
-1. **Recompile**: `python -m ndskit.recomp "$ROM" --out build/recomp
-   --optest`, then CMake and Ninja. **Done at the end of session 1** as a
-   head start: 10 modules (the program, six overlays, the ARM7, the two
-   instruction tests), 16 737 functions, none handed to the interpreter;
-   2 min 14 s to generate, 1 min 9 s to build, no warning; the instruction
-   test 57 781 vectors with no failure, recompiled and `--interp`. Next
-   in the self-test: vectors of this game's
-   functions that run alone (`python -m ndskit.recomp.selftest "$ROM"
-   --cpu 9 --auto`, `--cpu 7`, `--overlay 0`, `--overlay 2`: the program,
-   the ARM7, the missions' and the airship's overlays), recompiled and
-   `--interp`; a failure is read before anything else.
-2. **Boot to the title** (`ndsrun "$ROM" --save-size 65536 --out
-   build/title --vblanks 4790`): the logos, the opening movie (overlay 3,
-   the ITCM's VX decoder: no `--copy`), the title; against
-   `build/oracle/states/opening.ml1` (VBlank 2 387) and `title.ml1`
-   (4 787) with `python -m ndskit.melonds STATE --compare build/title`.
-   The log's `... interpreted (lr ...)` lines collected; the overlays'
-   changes of hands (3 for the opening, 4 at the title).
-3. **The movies**: how the VX player paces itself and plays its sound
-   (`05-open-questions.md`); the picture on both screens (`--shots` on
-   consecutive frames) against melonDS's; the opening's music
-   (`SEQ_56FFTheme`, *inferred*) and a movie's own sound by ear.
-4. **The route into the Glabados Ruins**: `--input` with START (the
-   opening skipped), the tap on New Game, A for the lines, the tap on the
-   Flan; the run at the same VBlank as `glabados_tutorial.ml1` (5 984)
-   compared. The orders are drags: `ndsrun --input` has `tap` only; a
-   `drag` added to ndskit (with the flow of `10-ndskit.md`) if the route
-   needs one.
-5. **The window**, when the user asks: `ndsrun "$ROM" --window
-   --save-size 65536 --out build/play` (MSYS2 on PATH), the mouse on the
-   lower screen as the stylus; the save written when the window closes.
-6. Then the PC side (`06-attack-plan.md`): the lower screen large, the
+1. **The user's eyes and ears in the window** (`ndsrun "$ROM" --window
+   --save-size 65536 --out build/play`, MSYS2 on PATH): the logos, the
+   movies and their sound (the second movie's sound peaks at full scale
+   in a WAV of the run: to hear against melonDS), the title's music, the
+   tutorial played with the mouse as the stylus. Anything off goes into
+   `12-picture.md` and `13-sound.md`.
+2. **The gameplay loop**: the first missions, the airship (overlay 2),
+   the preparations (5), the license board (1), a save and a load (the
+   512 Kbit EEPROM; the window writes it when it closes). The log's
+   `... interpreted (lr ...)` lines, if any appear, read and their rules
+   found, as pc-nostalgia did.
+3. **The movies' pacing and sound** (`05-open-questions.md`): channels
+   12 and 13 loop 704 PCM16 samples at 369 Hz through the whole movie
+   (*inferred*: the player's clock); the movies with their own sound
+   (BRG, CBE, ...), how the player feeds it.
+4. **Drags**: the game's orders and selections are stylus drags;
+   `ndsrun --input` has `tap` only. A `drag` (ndskit, with the flow of
+   `10-ndskit.md`) if a scripted route needs one; the window's mouse does
+   drags already.
+5. Then the PC side (`06-attack-plan.md`): the lower screen large, the
    hotkeys, the resolution, the frame rate.
 
 Before starting: MSYS2's tools on PATH (`export
 PATH=/c/msys64/mingw64/bin:$PATH`), Windows's Python
-(`/c/Python314/python.exe`); the cartridge in `rom/` and extracted
-(`build/extract`); melonDS's states in `build/oracle/states/`. ndskit is
-at `5ee24af` in this port, the three others and `D:\Homebrew6\ndskit`;
-any change to it keeps the flow of `10-ndskit.md`. Nothing is pushed
-until the game plays.
+(`/c/Python314/python.exe`); the cartridge in `rom/` and extracted;
+`build/recomp` built (2 minutes to generate, 1 to build); melonDS's
+states in `build/oracle/states/` and `build/oracle/logos/`. ndskit is at
+`ad61a11` in this port, the three others and `D:\Homebrew6\ndskit`; any
+change keeps the flow of `10-ndskit.md`. Nothing is pushed until the game
+plays.
