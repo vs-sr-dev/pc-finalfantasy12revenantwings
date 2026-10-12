@@ -100,4 +100,5 @@
   save showing the first: the game wrote about 26 KiB of the EEPROM
   (0x2000-0x8740, the header at 0x000 naming the airship "Galbana"),
   read back within the session, and to the `.sav` when the window
-  closed.
+  closed. **Continue loads it** in a new window (the user, playing on
+  into mission 1-1).
