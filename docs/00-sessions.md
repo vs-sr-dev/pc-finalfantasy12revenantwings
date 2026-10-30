@@ -109,3 +109,31 @@
   (ratio 1.0000), the backup written at the close. Not yet seen in play:
   the airship's own screens at length, the preparations (overlay 5) and
   the license board (overlay 1).
+
+## Session 3 (2026-10-30) — the first chapter played, every overlay met, published
+
+* **Chapter 1, by the user**: 13 min 49 s from mission 1-1's save
+  (49 578 frames), on through the chapter: the battles (overlay 0), the
+  airship's own screens (overlay 2, three times), a movie (overlay 3),
+  the world map with the airship flown in 3D, "everything working"; saved
+  at the chapter's end. Nothing interpreted, the audio queue never dry
+  nor cut (ratio 1.0000).
+* **Into chapter 2, by the user**: 32 min 27 s from that save (116 470
+  frames): the next missions, **the preparations** before a mission
+  (overlay 5, first at frame 32 256: the objective, the leaders, the
+  Espers, Save and Begin, the picture right), and after mission 2-2,
+  where Llyud gives the party the Ring of Pacts, **the license board**
+  (overlay 1, at 112 787), "visually all right". Every one of the six
+  overlays now met in play; nothing interpreted; the audio queue never
+  dry nor cut (ratio 1.0001); saved, the backup written at the close.
+* **Once in a battle** (frame 44 033, its start) the runtime's 3D said
+  "the polygon or vertex list is full (DS limits): polygons dropped":
+  ndskit drops them as the DS does, after culling and clipping, at 2 048
+  polygons or 6 144 vertices, setting GXSTAT's overflow bit for the game
+  to read; the user saw nothing amiss. Whether melonDS meets the limit
+  at the same place is open (`05-open-questions.md`).
+* **The criterion met** ("the picture right, the sound right, the
+  gameplay loop working"): 1 h 38 min of play over sessions 2 and 3,
+  from a new cartridge into chapter 2. **Published**: ndskit's README
+  with its fourth port (ndskit `234b110`), this repository with
+  `.recomp.json` ("playable"), the three other ports' submodules bumped.

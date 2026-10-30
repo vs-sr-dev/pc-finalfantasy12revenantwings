@@ -49,3 +49,12 @@ sound and pacing need of the runtime's timing.
 `D:\Homebrew6\ndskit` is at `ad61a11`; pc-moon's submodule bumped in its
 commit `c7bcad3`, pc-nostalgia's in `56974e0`, pc-lufiacots's in `4a694e8`
 (all local).
+
+## Session 3
+
+| Commit | What | Checked by |
+|---|---|---|
+| `234b110` | **the README with its fourth game**: this port in the ports table, the thread switch's rule in the runtime's layer, this cartridge in the checks, its speed headless among the gaps | a README only: nothing to build |
+
+`D:\Homebrew6\ndskit` fast-forwarded to `234b110` and pushed with the
+publication; pc-moon, pc-nostalgia and pc-lufiacots bumped to it.

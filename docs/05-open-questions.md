@@ -50,8 +50,20 @@ What is not known yet, with where to look.
   the `.bsp` stages, the events' scripts in `EventPack.dpk`: the port
   does not need them; a PC version's improvements might (the map's
   extent for the camera, the units' positions for hotkeys).
-* **How the units are drawn**: 2D sprites (OAM) over the 3D map, or
-  quads in the 3D? It decides how they look at the window's resolution.
+* ~~How the units are drawn~~: in the 3D, as the map (session 2: with
+  every OAM sprite hidden, Vaan and the Flan still drawn; the OAM holds
+  only the cursor, the hints and the markers).
+
+## The picture
+
+* **The 3D's lists full in a battle**: once at the start of a chapter 2
+  battle (frame 44 033 of session 3's second play) the runtime dropped
+  polygons past the DS's 2 048 polygons or 6 144 vertices, as the DS
+  does; nothing amiss to the user's eye. Does melonDS meet the limit at
+  the same place (a state there, GXSTAT's bit 13)? A wider view (the
+  mouse wheel, `06-attack-plan.md`) will draw more of the map and meet it
+  sooner: the renderer could keep the polygons past it, as a PC
+  version's choice.
 
 ## The oracle
 

@@ -1,12 +1,12 @@
 # pc-finalfantasy12revenantwings
 
-A native PC port, in the making, of **Final Fantasy XII: Revenant Wings**
+A native PC port of **Final Fantasy XII: Revenant Wings**
 (Nintendo DS; © 2007, 2008 Square Enix, developed with Think & Feel), the
 sequel to Final Fantasy XII: Vaan, Penelo, the sky pirate Balthier, the
 floating continent of Lemurés, fought out as a real-time strategy game
 with the stylus. The cartridge's two programs and its six overlays are
-to be recompiled statically to C++ and run on a runtime that replaces
-the DS's hardware, the 3D drawn by the PC's GPU at the window's
+recompiled statically to C++ and run on a runtime that replaces the
+DS's hardware, the 3D drawn by the PC's GPU at the window's
 resolution, the mouse as the stylus.
 
 It is the fourth game of [ndskit](https://github.com/vs-sr-dev/ndskit),
@@ -86,12 +86,20 @@ interpreted; the VX movie decodes byte for byte as melonDS's, and the
 title's memory and VRAM agree with melonDS's but for the clock. ndskit
 learnt that a thread switch gives the other CPU the rest of the
 quantum: without it the game ran at 60 frames a second instead of 30.
+The user played it in the window from a new cartridge through the
+prologue to mission 1-1, saving and loading.
+
+Session 3: **playable**. The user played on through the first chapter
+into the second: the battles, the airship, the world map flown in 3D,
+the preparations before a mission and, after mission 2-2, the license
+board (the Ring of Pacts); every one of the six overlays met in play.
+1 h 38 min of play in all, nothing to report, not one function left to
+the interpreter, the sound never short.
 
 ## Playing it
 
-Early days: from a new cartridge through the opening, the title and the
-first battle, headless; the window is to be tried. You need Python 3, and
-to build: clang, CMake, Ninja and SDL3 (on Windows, MSYS2's
+From a new cartridge into the second chapter, by the user. You need
+Python 3, and to build: clang, CMake, Ninja and SDL3 (on Windows, MSYS2's
 `mingw-w64-x86_64` packages), and a GPU with OpenGL 4.5. From the
 repository's root, with your cartridge in `rom/`:
 
